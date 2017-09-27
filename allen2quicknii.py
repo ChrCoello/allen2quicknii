@@ -124,7 +124,7 @@ def allen2quicknii(series_id,get_orig,target_dir=""):
         file_size_dl = 0;
         image=requests.get(img_pattern.format(sec_id,downsample),stream=True)
         print("\r -- section {:04} downsampled".format(sec_num),end="",flush=True)
-        with open("{:04}_{}.jpg".format(sec_num,sec_id),"wb") as f:
+        with open("{}_s{:04}.jpg".format(sec_id,sec_num),"wb") as f:
             for chunk in image.iter_content(chunk_size=chunk_size):
                 if chunk:
                     file_size_dl += chunk_size
@@ -136,7 +136,7 @@ def allen2quicknii(series_id,get_orig,target_dir=""):
             image = requests.get(img_pattern.format(sec_id,0),stream=True)
             file_size_dl = 0;
             print("\r -- section {:04} original size".format(sec_num),end="",flush=True)
-            with open("originals/{:04}_{}.jpg".format(sec_num,sec_id),"wb") as f:
+            with open("originals/{}_s{:04}.jpg".format(sec_id,sec_num),"wb") as f:
                 for chunk in image.iter_content(chunk_size=chunk_size):
                     if chunk:
                         file_size_dl += chunk_size
